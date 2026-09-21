@@ -1,256 +1,1325 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>A Practical Guide to Starting a Business</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>The Sovereign Youth Masterclass: Business, Field Hustles & Compounded Wealth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --primary: #1e3a8a;
-      --accent: #2563eb;
-      --nav-bg: #0f172a;
-      --nav-hover: #1d4ed8;
-      --text: #1f2937;
-      --muted: #4b5563;
-      --border: #e5e7eb;
-      --printify-bg: #0f172a; /* Dark theme for Printify */
-      --printify-text: #f8fafc;
-      --printify-accent: #10b981; /* Green accent */
-    }
+    <!-- =========================================================================
+       CORE DESIGN SYSTEM: Clean typography, high-contrast borders, structured grids
+       ========================================================================= -->
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --card-alt: #f1f5f9;
+            --primary: #0f172a;
+            --secondary: #1e3a8a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-soft: #eff6ff;
+            --nav-bg: #0b1329;
+            --text: #1e293b;
+            --muted: #475569;
+            --border: #cbd5e1;
+            --border-light: #e2e8f0;
+            --success: #15803d;
+            --success-bg: #f0fdf4;
+            --warning: #b45309;
+            --warning-bg: #fffbeb;
+            --danger: #b91c1c;
+            --danger-bg: #fef2f2;
+            --code-bg: #0f172a;
+            --code-text: #38bdf8;
+        }
 
-    * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      scroll-behavior: smooth;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* NAVIGATION */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--nav-bg);
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
+        /* TOP PROGRESS BAR */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 2000;
+        }
 
-    nav ul {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      margin: 0;
-      padding: 16px 28px;
-      overflow-x: auto;
-    }
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #38bdf8;
+            transition: width 0.1s ease-out;
+        }
 
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 6px 10px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    nav a:hover { background: var(--nav-hover); }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+        }
 
-    /* LAYOUT */
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+        .brand {
+            font-weight: 800;
+            color: #f8fafc;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    h1 { text-align: center; color: var(--primary); margin-bottom: 35px; font-size: 2.4rem; }
-    h2 { color: var(--primary); margin-bottom: 12px; }
-    p { color: var(--muted); margin-bottom: 15px; }
-    ul { padding-left: 22px; margin-top: 10px; }
-    li { margin-bottom: 12px; }
-    li::marker { color: var(--accent); }
+        .brand span {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
 
-    .term { font-weight: 700; color: var(--primary); }
+        nav ul {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            overflow-x: auto;
+            padding: 4px 0;
+        }
 
-    strong {
-      color: var(--primary);
-      background: #eef2ff;
-      padding: 3px 7px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
 
-    .section {
-      background: var(--card);
-      padding: 30px;
-      margin-bottom: 35px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
+        nav a:hover,
+        nav a.active {
+            background: var(--accent-hover);
+            color: #ffffff;
+        }
 
-    /* PRINTIFY CUSTOM STYLE */
-    .printify-alt {
-      background: var(--printify-bg);
-      color: var(--printify-text);
-      border: 2px solid var(--printify-accent);
-    }
-    
-    .printify-alt h2 { color: var(--printify-accent); }
-    .printify-alt p { color: #cbd5e1; }
-    .printify-alt li::marker { color: var(--printify-accent); }
-    .printify-alt .term { color: var(--printify-accent); }
+        /* CONTAINER & TYPOGRAPHY */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
+        .hero-banner {
+            background: linear-gradient(135deg, #0b1329 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 45px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    table th, table td {
-      padding: 12px;
-      border: 1px solid var(--border);
-      text-align: left;
-    }
+        .hero-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
 
-    table th { background: #f8fafc; }
+        .hero-banner p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+        }
 
-    .final {
-      background: #eef2ff;
-      border-left: 6px solid var(--accent);
-      padding: 22px;
-      border-radius: 8px;
-      font-weight: 700;
-      color: var(--primary);
-    }
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-    @media (max-width: 700px) {
-      h1 { font-size: 1.9rem; }
-      .section { padding: 22px; }
-    }
-  </style>
+        .hero-tag {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 45px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        h2 {
+            font-size: 1.85rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin: 30px 0 14px 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        ul,
+        ol {
+            padding-left: 28px;
+            margin-bottom: 22px;
+            color: var(--text);
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        li strong {
+            color: var(--secondary);
+        }
+
+        .term {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        /* GRIDS & CARDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 25px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .card-box {
+            background: var(--card-alt);
+            border: 1px solid var(--border-light);
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .card-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* CALLOUT BOXES */
+        .callout {
+            padding: 20px 24px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 0.98rem;
+        }
+
+        .callout-success {
+            background: var(--success-bg);
+            border-left: 5px solid var(--success);
+            color: #14532d;
+        }
+
+        .callout-warning {
+            background: var(--warning-bg);
+            border-left: 5px solid var(--warning);
+            color: #78350f;
+        }
+
+        .callout-danger {
+            background: var(--danger-bg);
+            border-left: 5px solid var(--danger);
+            color: #7f1d1d;
+        }
+
+        .callout-info {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            color: #1e3a8a;
+        }
+
+        /* TABLES */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        table th,
+        table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        table th {
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover td {
+            background: #fdfdfe;
+        }
+
+        /* SCRIPT CODE CARDS */
+        .script-box {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-left: 4px solid var(--code-text);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .script-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* ACCORDION FAQ / DEEP DIVES */
+        .accordion-item {
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            background: var(--card);
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 18px 22px;
+            background: var(--card);
+            border: none;
+            outline: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #f8fafc;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            content: '−';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fafafa;
+        }
+
+        .accordion-inner {
+            padding: 22px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* INTERACTIVE CALCULATOR STYLES */
+        .calc-container {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 30px;
+            border-radius: 14px;
+            margin: 30px 0;
+            border: 1px solid #1e293b;
+        }
+
+        .calc-container h3 {
+            color: #38bdf8;
+            margin-top: 0;
+        }
+
+        .calc-container p {
+            color: #94a3b8;
+        }
+
+        .calc-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #38bdf8;
+        }
+
+        .calc-results {
+            margin-top: 25px;
+            padding: 20px;
+            background: #1e293b;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border: 1px solid #334155;
+        }
+
+        .result-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        .stat-value.highlight-green {
+            color: #4ade80;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0b1329;
+            color: #94a3b8;
+            padding: 50px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner h1 {
+                font-size: 2.1rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-  <ul>
-    <li><a href="#intro">Introduction</a></li>
-    <li><a href="#test">Litmus Test</a></li>
-    <li><a href="#criteria">Criteria</a></li>
-    <li><a href="#investing">Investing</a></li>
-    <li><a href="#avocado">Avocados</a></li>
-    <li><a href="#printify">Printify/Etsy</a></li>
-  </ul>
-</nav>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
 
-<div class="container">
+    <nav>
+        <div class="nav-inner">
+            <div class="brand">
+                SOVEREIGN YOUTH <span>2026</span>
+            </div>
+            <ul>
+                <li><a href="#litmus">1. Idea Stress-Testing</a></li>
+                <li><a href="#digital-agency">2. Zero-Capital Agencies</a></li>
+                <li><a href="#high-income-skills">3. Technical Stacks</a></li>
+                <li><a href="#personal-finance">4. Cashflow Architecture</a></li>
+                <li><a href="#investing-core">5. MMFs, SACCOs & NSE</a></li>
+                <li><a href="#agri-business">6. Agri-Trade Economics</a></li>
+                <li><a href="#micro-livestock">7. Micro-Livestock Models</a></li>
+                <li><a href="#calculator">8. Financial Simulator</a></li>
+                <li><a href="#blueprint">9. 90-Day Execution</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <h1>A Practical Guide to Starting a Business</h1>
+    <div class="container">
 
-  <div id="intro" class="section">
-    <p>
-      When coming up with an idea, it should be detailed and practical—something that someone can take and start making cash with. Before you jump in, it's crucial to vet your idea and understand the full scope of the commitment.
-    </p>
-  </div>
+        <!-- HERO BANNER -->
+        <div class="hero-banner">
+            <h1>Strategic Independence & Wealth Masterclass</h1>
+            <p>A rigorous, battle-tested operational guide for youth. Move beyond speculative hype into verified unit
+                economics, physical and digital cash flows, and defensive compounding.</p>
+            <div class="hero-tags">
+                <span class="hero-tag">Zero-Capital Sweat Equity</span>
+                <span class="hero-tag">Defensive Cash Management</span>
+                <span class="hero-tag">MMFs & SACCO Dividends</span>
+                <span class="hero-tag">NSE Equity Accumulation</span>
+                <span class="hero-tag">B2B Local Agency</span>
+                <span class="hero-tag">Produce Aggregation Math</span>
+            </div>
+        </div>
 
-  <div id="test" class="section">
-    <h2>1. The Initial Litmus Test: Vetting Your Idea</h2>
-    <ul>
-      <li>Feasibility: In this, we check on all potential costs. Is it realistically possible to build and operate this business?</li>
-      <li>Economic Viability: The business should withstand current and future economic changes.</li>
-      <li>Future-Proofing: Capability of handling all financial and economic shifts in the future.</li>
-      <li>Legality: The business idea should only be legal.</li>
-      <li>Primary Aim: Is it for service provision or for profit-making?</li>
-      <li>Minimum Legal Requirements: Licenses, permits, and regulations (e.g., CCTV for cyber cafes).</li>
-    </ul>
-  </div>
+        <!-- SECTION 1: LITMUS TEST & IDEA VETTING -->
+        <div id="litmus" class="section">
+            <h2>1. The Cold-Light Litmus Test: Scientific Business Validation</h2>
+            <p>
+                The leading cause of startup mortality among youth is building solutions for problems customers do not
+                care enough to pay for. An idea is not validated when friends offer compliments; it is validated when a
+                customer transfers non-refundable cash to your account.
+            </p>
 
-  <div id="criteria" class="section">
-    <h2>2. Business Selection Criteria</h2>
-    <p><strong>Market and Competitive Factors</strong></p>
-    <ul>
-      <li>Market Demand: Is there a clear, ongoing need for your product?</li>
-      <li>Market Size & Growth: Is the market large enough to support growth?</li>
-      <li>Target Audience: Is there a clear and specific group of customers?</li>
-      <li>Niche & Competitive Advantage: What makes this business unique? (USP).</li>
-    </ul>
-  </div>
+            <h3>The 5 Core Stress-Test Gates</h3>
+            <div class="grid-2">
+                <div class="card-box">
+                    <h4>Gate 1: The Urgent vs. Optional Matrix</h4>
+                    <p>Does your venture solve a "bleeding neck" pain point or an optional luxury? In high-inflation
+                        economies, luxury services are canceled first. Businesses that preserve customer revenue, ensure
+                        regulatory compliance, or cut operational costs survive all seasons.</p>
+                </div>
+                <div class="card-box">
+                    <h4>Gate 2: The 90-Day Cash Runway</h4>
+                    <p>Assume your clients will delay payment by 30 to 60 days past invoice issuance. If your model
+                        cannot support continuous operations through unpaid receivable periods without incurring debt,
+                        your working capital structure is broken.</p>
+                </div>
+                <div class="card-box">
+                    <h4>Gate 3: The 35% Gross Margin Threshold</h4>
+                    <p>Never enter a venture with gross margins under 35% unless you operate at industrial scale. Lower
+                        margins leave zero margin of error for sudden supplier price hikes, fuel adjustments, vehicle
+                        breakdowns, or uncollected debts.</p>
+                </div>
+                <div class="card-box">
+                    <h4>Gate 4: Regulatory & Licensing Drag</h4>
+                    <p>Enumerate every required permit beforehand: Single Business Permits, public health certificates,
+                        fire safety clearances, KRA tax compliance, and waste management disposal fees. Hidden
+                        compliance costs wipe out thin margins.</p>
+                </div>
+            </div>
 
-  <div id="investing" class="section">
-    <h2>3. Wealth Creation: Why Invest Rather Than Save?</h2>
-    <p>
-      Saving is keeping money for future use, but <strong>Investing</strong> is putting your money to work to generate more money. Over time, inflation reduces the value of savings, while investments can grow faster than inflation.
-    </p>
+            <div class="callout callout-warning">
+                <strong>The Low-Barrier Paradox:</strong> If an opportunity can be launched by anyone with a smartphone
+                in under 48 hours without specialized skills, proprietary supplier access, or high physical exertion,
+                expect immediate, aggressive price cutting. True enterprise value requires defensibility.
+            </div>
 
-    
+            <h3>How to Execute a 48-Hour Smoke Test</h3>
+            <ol>
+                <li><strong>Isolate the Core Value Offer:</strong> Condense what you are selling into a single sentence
+                    outlining the transformation: <em>"We cut SME monthly inventory loss by 40% using automated weekly
+                        audits."</em></li>
+                <li><strong>Build a 1-Page Case PDF:</strong> Detail the problem, your proposed fix, and a specific
+                    introductory price valid for only the first 3 clients.</li>
+                <li><strong>Perform 20 Cold In-Person Visits or Direct Calls:</strong> Approach actual business
+                    operators. Do not ask, <em>"Would you buy this?"</em> Ask: <em>"We are launching on Monday. Would
+                        you like to lock in the 30% founder tier with a 2,000/= refundable deposit?"</em></li>
+                <li><strong>Analyze the Signal:</strong> If 20 decision-makers decline, the offer is either targeting
+                    the wrong pain point, priced incorrectly, or pitched to poor prospects. Pivot before spending your
+                    savings.</li>
+            </ol>
+        </div>
 
-    <ul>
-      <li>Buying Shares (Equity): When you buy shares, you own a "piece" of a company. You benefit from dividends (profit sharing) and capital appreciation (the share price going up).</li>
-      <li>The Power of Compounding: Investing early allows your returns to earn their own returns. This is how small amounts grow into large fortunes over time.</li>
-      <li>Risk Management: Unlike saving in a bank, shares carry risk. However, diversifying (buying different types of shares) helps protect your capital.</li>
-      <li>Accessibility: In 2026, you can start buying shares via mobile apps with as little as 1000/=.</li>
-    </ul>
-  </div>
+        <!-- SECTION 2: ZERO-CAPITAL DIGITAL & LOCAL AGENCY HUSTLES -->
+        <div id="digital-agency" class="section">
+            <h2>2. Zero-Capital Service Agency: Monetizing Local Market Inefficiencies</h2>
+            <p>
+                Building digital products or competing on saturated global freelance platforms is often an uphill battle
+                for beginners. The most immediate path to predictable, monthly recurring income is bridging the massive
+                digital gap between traditional offline local enterprises and modern customers.
+            </p>
 
-  <div id="avocado" class="section">
-    <h2>4. Business Idea: Fuerte & Hass Avocado Trade</h2>
-    <p><em>Market Intel (James):</em> The business performs exceptionally well from April onwards with market hubs in Thika.</p>
-    
-    <ul>
-      <li>Varieties: Fuerte (Starting field price: 12/= per kg) and Hass (Approx. 15/= per kg).</li>
-      <li>Factory Selling Price: Starts at approx. 24/= per kg (Minimum floor price usually 21/=).</li>
-    </ul>
+            <h3>Opportunity Vertical A: Local SME Google Presence & Search Optimization</h3>
+            <p>
+                Thousands of hardware stores, private medical dispensaries, motor spare parts dealers, and legal
+                practices miss local revenue because their digital storefronts are abandoned, unverified, or mislabeled
+                on search maps.
+            </p>
 
-    <p><strong>The Operational Math (2500kg Load):</strong></p>
-    <table>
-      <thead>
-        <tr><th>Expense Item</th><th>Amount (KES)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Purchase (2500kg x 12/=)</td><td>30,000</td></tr>
-        <tr><td>Transport (Field to Thika)</td><td>5,000</td></tr>
-        <tr><td>Labour (3 people)</td><td>3,000</td></tr>
-        <tr><td>Road Transport Fee</td><td>150</td></tr>
-        <tr style="background:#f0f9ff;"><td><strong>Total Investment</strong></td><td><strong>38,150</strong></td></tr>
-        <tr style="background:#ecfdf5;"><td><strong>Factory Sale (60k) Profit</strong></td><td><strong>~21,850 per trip</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Deliverable</th>
+                            <th>Client Problem</th>
+                            <th>Implementation Time</th>
+                            <th>Fair Market Retainer (KES)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google Business Profile Reclamation</strong></td>
+                            <td>Unclaimed listing, wrong phone numbers, zero reviews, missing store hours.</td>
+                            <td>3 to 5 hours</td>
+                            <td>5,000/= (One-off setup)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Review System Automation</strong></td>
+                            <td>Competitors outrank them because they lack recent positive reviews.</td>
+                            <td>2 hours setup</td>
+                            <td>3,000/= (Setup QR counter stands)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monthly Photo & Catalog Updates</strong></td>
+                            <td>Products change, but digital profiles show dead inventory from 3 years ago.</td>
+                            <td>4 hours / month</td>
+                            <td>8,000/= – 12,000/= / month</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-  <div id="printify" class="section printify-alt">
-    <h2>5. Print-on-Demand: Printify & Etsy Guide</h2>
-    <p>This is a low-capital digital business that allows you to sell custom products globally.</p>
-    <ul>
-      <li>Sign up: Create a free Printify account and select "Artist/Designer".</li>
-      <li>Connect Etsy: Link your Etsy shop to Printify for automated order fulfillment.</li>
-      <li>Product Design: Upload your designs to products; Printify handles the printing and shipping.</li>
-      <li>Publishing: Once you publish from Printify, the items appear live on your Etsy shop.</li>
-    </ul>
-    <p class="final" style="background: rgba(255,255,255,0.1); color: white; border-left-color: var(--printify-accent);">
-      > Final Thought: Investing in your knowledge and your capital is the only way to true financial freedom.
-    </p>
-  </div>
+            <div class="script-box">
+                <span class="script-label">Cold Outreach Pitch Script (In-Person SME Walk-In)</span>
+                "Good morning, Sir/Madam. I was searching for commercial plumbing fittings on my phone down the road,
+                and your competitor two blocks away came up first because they have 48 positive reviews and an active
+                catalog, while your listing shows 'unclaimed' with an old telephone number.
 
-</div>
+                You are losing walk-in clients every day. I run a local business profile management service. For
+                6,000/=, I will verify your location, fix your map pins, upload your primary inventory catalog, and
+                create a printed counter QR card that lets satisfied customers review you in 5 seconds. Can we spend 10
+                minutes setting this up today?"
+            </div>
 
-<script>
-  document.querySelectorAll("li").forEach(li => {
-    const text = li.innerHTML;
-    if (text.includes(":") && !text.includes("<span")) {
-      const parts = text.split(/:(.+)/);
-      li.innerHTML = `<span class="term">${parts[0]}:</span>${parts[1]}`;
-    }
-  });
-</script>
-  <footer> wakaba visionaries @2026</footer>  
+            <h3>Opportunity Vertical B: Vertical Video Repurposing for High-Ticket Professionals</h3>
+            <p>
+                Lawyers, real estate agents, dental clinic owners, and private tutors understand they need to be on
+                TikTok, Instagram Reels, and YouTube Shorts to win clients. However, they lack the hours, technical
+                patience, or editing speed to cut long recordings into sharp, vertical content.
+            </p>
+            <ul>
+                <li><strong>Input:</strong> Ask the client to record a 20-minute weekly voice note or casual video
+                    answering 5 common questions their customers ask.</li>
+                <li><strong>Production:</strong> Use free tools like CapCut Desktop or DaVinci Resolve. Remove filler
+                    words, add concise dynamic captions, insert relevant b-roll, and export 5 punchy 45-second clips.
+                </li>
+                <li><strong>Distribution:</strong> Deliver 20 ready-to-post vertical clips every month for a flat
+                    retainer of 15,000/= to 25,000/= per client. With three clients, you achieve 45,000/= to 75,000/= in
+                    monthly gross income from your laptop.</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 3: PRACTICAL TECHNICAL STACKS FOR YOUTH -->
+        <div id="high-income-skills" class="section">
+            <h2>3. High-Value Technical Stacks: Deepening Your Moat</h2>
+            <p>
+                Basic digital literacy is now commoditized. To command strong client retainers, high hourly rates, or
+                build functional web businesses, young professionals must master practical technical stacks that deliver
+                clear ROI.
+            </p>
+
+            <div class="grid-3">
+                <div class="card-box">
+                    <h4>1. Web Applications & Automation</h4>
+                    <p>Master responsive CSS frameworks, modern JavaScript, and backend integration. Businesses pay for
+                        automated invoice delivery, WhatsApp notification webhooks, and streamlined internal databases
+                        that replace manual spreadsheets.</p>
+                </div>
+                <div class="card-box">
+                    <h4>2. Applied AI & Data Pipelines</h4>
+                    <p>Learn how to connect language model APIs to local proprietary documents (RAG systems). Build
+                        custom customer service knowledge bases for insurance firms, colleges, and logistics operators.
+                    </p>
+                </div>
+                <div class="card-box">
+                    <h4>3. Localized Linux & Systems Administration</h4>
+                    <p>Master Linux environments (e.g., Ubuntu server configurations, cron jobs, automated backup
+                        routines, container management). Companies need technicians who can run on-premise,
+                        cost-effective server infrastructure without paying exorbitant cloud licenses.</p>
+                </div>
+            </div>
+
+            <div class="callout callout-info">
+                <strong>The Stack Rule:</strong> Do not learn tools in a vacuum. Pair every theoretical coding, design,
+                or sysadmin skill with a specific business outcome. Learn Python not just for syntax, but to automate
+                daily stock reconciliation for a hardware wholesaler.
+            </div>
+        </div>
+
+        <!-- SECTION 4: CASH FLOW DISCIPLINE & LIVING RUNWAY -->
+        <div id="personal-finance" class="section">
+            <h2>4. Cash Flow Architecture: The Rules of Financial Defense</h2>
+            <p>
+                Wealth is not defined by how much money flows through your hands; it is dictated by how much capital you
+                retain, defend, and deploy into productive assets. The biggest pitfall for young entrepreneurs is
+                treating gross revenue as personal profit.
+            </p>
+
+            <h3>The 3-Account Banking Architecture</h3>
+            <p>
+                To prevent business failure caused by personal spending, open three separate bank or mobile accounts
+                immediately:
+            </p>
+
+            <div class="grid-3">
+                <div class="card-box">
+                    <h4>Account 1: Operations (The Vault)</h4>
+                    <p>Every single client payment, contract fee, or sales deposit lands here. No personal spending
+                        occurs from this account. It pays direct business expenses, supplier invoices, and taxes.</p>
+                </div>
+                <div class="card-box">
+                    <h4>Account 2: Personal Survival Floor</h4>
+                    <p>On the 1st of every month, pay yourself a fixed, non-negotiable personal salary from Account 1.
+                        This stipend covers rent, groceries, transport, and utilities. If the business makes extra
+                        profit, your salary stays flat.</p>
+                </div>
+                <div class="card-box">
+                    <h4>Account 3: Strategic Reinvestment</h4>
+                    <p>Surplus profits above the operational baseline are swept into this account weekly. This funds
+                        long-term asset accumulation, dividend-bearing equities, and emergency reserves.</p>
+                </div>
+            </div>
+
+            <h3>The Strict 50 / 30 / 20 Rule for Irregular Incomes</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bucket</th>
+                            <th>Percentage</th>
+                            <th>Target Items</th>
+                            <th>Rules of Governance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fixed Needs</strong></td>
+                            <td>50% Maximum</td>
+                            <td>Baseline rent, groceries, electricity, water, commuting fare.</td>
+                            <td>If needs exceed 50% of your baseline salary, downsize living costs immediately.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Strategic Wealth & Liquidity</strong></td>
+                            <td>20% Minimum</td>
+                            <td>Money Market Funds (MMFs), SACCO deposit accumulation, NSE share dividends.</td>
+                            <td>Non-negotiable. Paid first the moment income arrives, not with "whatever is left over."
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Growth & Lifestyle</strong></td>
+                            <td>30% Balance</td>
+                            <td>Technical books, skill certifications, upgraded working tools, modest leisure.</td>
+                            <td>If equipment breaks, it is replaced from this bucket, protecting your primary assets.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-danger">
+                <strong>The Danger of "Lifestyle Creep":</strong> The moment young professionals land their first major
+                contract or score a lucrative trading run, they often upgrade their living quarters, buy luxury
+                smartphones, and pick up expensive social tabs. Lifestyle expansion absorbs capital that should serve as
+                working equity during dry months. Keep your living expenses at a baseline level for at least 24
+                consecutive months.
+            </div>
+        </div>
+
+        <!-- SECTION 5: PRACTICAL WEALTH BUILDING (MMFs, SACCOs, NSE) -->
+        <div id="investing-core" class="section">
+            <h2>5. Wealth Building: MMFs, Regulated SACCOs & Equity Markets</h2>
+            <p>
+                Ordinary savings accounts destroy capital over time because inflation outpaces bank interest rates. To
+                preserve purchasing power and build long-term generational wealth, allocate across complementary
+                institutional vehicles.
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Investment Vehicle</th>
+                            <th>Typical Target Yield</th>
+                            <th>Liquidity Window</th>
+                            <th>Core Role in Portfolio</th>
+                            <th>Primary Risks & Mitigations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Money Market Funds (MMFs)</strong></td>
+                            <td>11.0% – 14.0% p.a. (Compounded Daily)</td>
+                            <td>24 to 48 Hours</td>
+                            <td>Emergency fund storage; holding cash waiting for business deployment.</td>
+                            <td>Low. Yield moves with benchmark central bank rates. Use licensed, top-tier fund
+                                managers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SASRA-Regulated SACCOs</strong></td>
+                            <td>9.0% – 13.5% p.a. (Dividends on Deposits)</td>
+                            <td>60 Days for refunds; shares are transferable</td>
+                            <td>Wealth accumulation; access to low-interest leverage (3x–4x savings).</td>
+                            <td>Medium. Bad debts from non-performing member loans. Stick strictly to Tier-1,
+                                SASRA-audited SACCOs.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nairobi Securities Exchange (NSE)</strong></td>
+                            <td>5% – 10% Dividends + Capital Appreciation</td>
+                            <td>T+3 Settlement Days via CDSC Account</td>
+                            <td>Long-term equity ownership in established commercial enterprises.</td>
+                            <td>High price volatility. Mitigate by buying fundamentally sound dividend aristocrats at
+                                fair valuations.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>The Mathematics of Long-Term Compounding</h3>
+            <p>
+                Small capital sums invested with disciplined consistency produce substantial results over time. Consider
+                an entrepreneur who deposits <strong>5,000/= every single month</strong> into an asset yielding an
+                average of 12% annually:
+            </p>
+            <ul>
+                <li><strong>Year 3:</strong> Total Capital Contributed: 180,000/= | <strong>Portfolio Balance:
+                        ~217,000/=</strong> (Interest earned: 37,000/=)</li>
+                <li><strong>Year 7:</strong> Total Capital Contributed: 420,000/= | <strong>Portfolio Balance:
+                        ~660,000/=</strong> (Interest earned: 240,000/=)</li>
+                <li><strong>Year 12:</strong> Total Capital Contributed: 720,000/= | <strong>Portfolio Balance:
+                        ~1,600,000/=</strong> (Interest earned surpasses total contributions)</li>
+                <li><strong>Year 20:</strong> Total Capital Contributed: 1,200,000/= | <strong>Portfolio Balance:
+                        ~4,995,000/=</strong> (Compounding accelerates exponentially)</li>
+            </ul>
+
+            <h3>The SACCO Leverage Playbook: Sound Rules for Debt</h3>
+            <p>
+                Borrowing money to finance everyday lifestyle needs, clothing, or consumer items guarantees financial
+                strain. Borrowing to finance proven, high-margin productive capacity, however, can rapidly accelerate
+                your business growth.
+            </p>
+            <ol>
+                <li><strong>Build the Deposit Base:</strong> Deposit consistently in a regulated SACCO for a minimum of
+                    6 to 12 months. Establish a proven track record of reliable monthly savings.</li>
+                <li><strong>Borrow Only for Self-Liquidating Assets:</strong> If you borrow 300,000/= at 1% per month on
+                    a reducing balance to buy a reliable delivery pickup or specialized processing equipment, ensure
+                    that equipment generates at least 1.5x the monthly loan repayment.</li>
+                <li><strong>Never Risk Collateral You Cannot Afford to Lose:</strong> Ensure personal living expenses do
+                    not depend on your loan debt service. Maintain cash buffers to cover at least two months of loan
+                    repayments during unexpected downturns.</li>
+            </ol>
+        </div>
+
+        <!-- SECTION 6: PHYSICAL TRADE - AVOCADO AGGREGATION -->
+        <div id="agri-business" class="section">
+            <h2>6. Physical Trade Blueprint: Fuerte & Hass Avocado Aggregation</h2>
+            <p>
+                Physical produce aggregation offers ambitious youth a proven avenue to generate significant working
+                capital when timed with local harvest cycles. However, navigating agricultural markets requires precise
+                operational discipline and strict quality control.
+            </p>
+
+            <h3>Variety Profiles & Industrial Market Dynamics</h3>
+            <div class="grid-2">
+                <div class="card-box">
+                    <h4>Fuerte Variety (Green-Skin)</h4>
+                    <p><strong>Characteristics:</strong> Smooth, green skin that stays green when ripe; pear-shaped with
+                        high oil content.<br>
+                        <strong>Primary Buyers:</strong> Commercial oil extraction facilities (e.g., in Thika, Murang'a,
+                        Nairobi), local fresh-produce retail markets.<br>
+                        <strong>Typical Farmgate Range:</strong> 10/= to 14/= per kg.<br>
+                        <strong>Factory Purchase Floor:</strong> Typically 20/= to 24/= per kg.
+                    </p>
+                </div>
+                <div class="card-box">
+                    <h4>Hass Variety (Pebble-Skin Export Grade)</h4>
+                    <p><strong>Characteristics:</strong> Thicker, pebbly skin turning deep purple/black upon ripening.
+                        Long shelf life during cold transit.<br>
+                        <strong>Primary Buyers:</strong> Fresh export packhouses catering to European, Middle Eastern,
+                        and Asian retail hubs.<br>
+                        <strong>Typical Farmgate Range:</strong> 14/= to 18/= per kg.<br>
+                        <strong>Factory/Packhouse Floor:</strong> Typically 24/= to 30/= per kg for calibrated export
+                        sizes (calibers 12–22).
+                    </p>
+                </div>
+            </div>
+
+            <h3>Comprehensive Trip Model: 2,500kg Load (Field to Processor)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expense Category</th>
+                            <th>Item & Quantitative Unit Specification</th>
+                            <th>Total (KES)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Raw Inventory Acquisition</strong></td>
+                            <td>2,500 kg raw farmgate produce @ 12/= per kg</td>
+                            <td>30,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Specialized Field Labor</strong></td>
+                            <td>3 trained pickers (stalk cutting, gentle collection) @ 1,000/=</td>
+                            <td>3,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Crate Rental & Handling</strong></td>
+                            <td>100 plastic ventilated crates @ 15/= each (avoids bag bruising)</td>
+                            <td>1,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vehicle Transit (Chartered)</strong></td>
+                            <td>Light truck from farmgate collection to processing hub</td>
+                            <td>5,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Statutory Transit Cess</strong></td>
+                            <td>County agriculture border barrier clearance receipts</td>
+                            <td>250</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weighbridge & Unloading</strong></td>
+                            <td>Certified weighbridge fee + factory offloading team</td>
+                            <td>1,200</td>
+                        </tr>
+                        <tr style="background: #f1f5f9;">
+                            <td><strong>Total Operating Capital Outlay</strong></td>
+                            <td><strong>Complete liquid cash required per trip run</strong></td>
+                            <td><strong>41,450</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Factory Revenue: Grade 1 Output</strong></td>
+                            <td>2,350 kg accepted by factory grader @ 24/= per kg</td>
+                            <td>56,400</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rejection Salvage: Grade 2 / Oil</strong></td>
+                            <td>150 kg non-export/bruised salvaged to oil press @ 8/= per kg</td>
+                            <td>1,200</td>
+                        </tr>
+                        <tr style="background: #ecfdf5;">
+                            <td><strong>Total Gross Realized Sales</strong></td>
+                            <td><strong>Combined factory remittance payout</strong></td>
+                            <td><strong>57,600</strong></td>
+                        </tr>
+                        <tr style="background: #dcfce7;">
+                            <td><strong>Net Operating Profit</strong></td>
+                            <td><strong>Net surplus cash retained per delivery trip</strong></td>
+                            <td><strong>+16,150</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-danger">
+                <strong>Critical Pitfalls in Field Aggregation:</strong>
+                <ul>
+                    <li><strong>Stalk-Pulling Damage:</strong> Never pull the fruit roughly from the branch; this tears
+                        the skin and invites fungal stem-end rot, causing instant factory rejection. Use clean shears to
+                        cut the stem, leaving a 2–3mm stalk intact.</li>
+                    <li><strong>Bag Packing Compression:</strong> Transporting ripe or mature avocados in packed gunny
+                        sacks causes deep internal bruising during rough transit. Always transport fruit in rigid,
+                        ventilated plastic crates.</li>
+                    <li><strong>Moisture Harvesting:</strong> Never pick avocados when trees are wet with morning dew or
+                        rain. Damp skins develop black fungal spotting in transit, spoiling the batch.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 7: MICRO-LIVESTOCK FEASIBILITY -->
+        <div id="micro-livestock" class="section">
+            <h2>7. Micro-Livestock Feasibility: High-Density, Small-Footprint Models</h2>
+            <p>
+                For youth with limited acreage or semi-urban plots, intensive micro-livestock ventures provide rapid
+                cash-flow cycles and efficient capital turnover compared to traditional large-scale farming.
+            </p>
+
+            <h3>Model A: Intensive Grower Pig Fattening</h3>
+            <p>
+                Breeding sows requires complex veterinary supervision and higher mortality risk. A lower-risk,
+                faster-turnaround model for youth is <strong>grower fattening</strong>: purchasing weaners at 2 months
+                of age, feeding them aggressively for 4 months to reach market slaughter weight, and selling directly to
+                butcheries or pork aggregators.
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Production Factor</th>
+                            <th>Parameters & Requirements</th>
+                            <th>Estimated Cost (KES)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Weaner Acquisition</strong></td>
+                            <td>Purchase of healthy 2-month-old piglet (18–20 kg weight)</td>
+                            <td>3,500 – 4,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nutritional Feed Budget</strong></td>
+                            <td>Grower meal + finisher meal over 120 days (~220 kg total feed)</td>
+                            <td>8,500 – 10,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vaccination & Deworming</strong></td>
+                            <td>Iron supplements, routine dewormers, multi-vitamins, disinfectant</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Finished Slaughter Weight</strong></td>
+                            <td>Target weight at 6 months of age: 80 kg to 90 kg live weight</td>
+                            <td>–</td>
+                        </tr>
+                        <tr style="background: #f1f5f9;">
+                            <td><strong>Total Cost of Production</strong></td>
+                            <td>Direct working investment per pig finished</td>
+                            <td><strong>~13,800</strong></td>
+                        </tr>
+                        <tr style="background: #ecfdf5;">
+                            <td><strong>Market Sale Price</strong></td>
+                            <td>Selling live weight at ~230/= – 250/= per kg (e.g., 85 kg pig)</td>
+                            <td><strong>19,550 – 21,250</strong></td>
+                        </tr>
+                        <tr style="background: #dcfce7;">
+                            <td><strong>Net Profit Margin</strong></td>
+                            <td>Realized surplus per finished head (over a 4-month cycle)</td>
+                            <td><strong>+5,750 – 7,450</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Model B: Small-Scale Dairy Cow Optimization</h3>
+            <p>
+                Smallholder dairy production can generate stable daily cash flow if milk output is optimized through
+                structured, balanced rations rather than reliance on poor roadside grazing.
+            </p>
+            <ul>
+                <li><strong>The Energy-Protein Ratio:</strong> A dairy cow requires balanced energy (e.g.,
+                    well-preserved silage or maize germ) paired with dense protein sources (dairy meal, cotton seed
+                    cake, or desmodium) and clean mineral licks to maintain steady lactation.</li>
+                <li><strong>Water Intake Dynamics:</strong> Milk is roughly 87% water. For every liter of milk produced,
+                    a dairy cow requires 3 to 4 liters of clean, fresh water. Restricting water intake directly cuts
+                    your daily milk yield.</li>
+                <li><strong>Morning vs. Evening Yield Management:</strong> Maximize early morning milk yields by
+                    offering fresh, palatable feed and clean water late in the evening. Milking at strictly consistent
+                    12-hour intervals keeps milk secretion steady throughout the week.</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 8: INTERACTIVE FINANCIAL SIMULATOR -->
+        <div id="calculator" class="section">
+            <h2>8. Interactive Wealth & Hustle Financial Simulator</h2>
+            <p>
+                Use this built-in calculator to project your financial runway, compound growth trajectory, and monthly
+                cash flow. Test various saving amounts and return rates to plan your journey with real figures.
+            </p>
+
+            <div class="calc-container">
+                <h3>Monthly Compounding & Wealth Accumulation Modeler</h3>
+                <p>Calculate your portfolio balance based on monthly deposits, expected annual yield, and time horizons.
+                </p>
+
+                <div class="calc-form">
+                    <div class="form-group">
+                        <label for="monthly-deposit">Monthly Investment (KES)</label>
+                        <input type="number" id="monthly-deposit" value="5000" step="500">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest-rate">Expected Annual Yield (%)</label>
+                        <input type="number" id="interest-rate" value="12" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="time-horizon">Investment Period (Years)</label>
+                        <input type="number" id="time-horizon" value="5" min="1" max="30">
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="result-stat">
+                        <span class="stat-label">Total Out-of-Pocket Deposits</span>
+                        <span class="stat-value" id="calc-principal">300,000/=</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Total Interest Generated</span>
+                        <span class="stat-value highlight-green" id="calc-interest">108,420/=</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Projected Final Balance</span>
+                        <span class="stat-value highlight-green" id="calc-total">408,420/=</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9: 90-DAY EXECUTION ROADMAP -->
+        <div id="blueprint" class="section">
+            <h2>9. The 90-Day Tactical Execution Roadmap</h2>
+            <p>
+                Theoretical knowledge without disciplined daily execution is meaningless. Follow this step-by-step
+                90-day plan to launch your venture, validate your offerings, and build sustainable cash-flow habits.
+            </p>
+
+            <div class="accordion-item active">
+                <button class="accordion-header">Phase 1: Foundation & Skill Locking (Days 1 – 30)</button>
+                <div class="accordion-content" style="max-height: 500px;">
+                    <div class="accordion-inner">
+                        <p><strong>Goal:</strong> Validate one high-income skill stack and establish clean banking
+                            boundaries.</p>
+                        <ul>
+                            <li><strong>Day 1 to 7:</strong> Pick a single vertical (e.g., Local SME Profile Setup or
+                                Short-Form Video Repurposing). Avoid spreading yourself thin across multiple business
+                                models.</li>
+                            <li><strong>Day 8 to 14:</strong> Build 3 polished mock samples (e.g., revamp a local
+                                store's digital listing as a case study, or edit 3 vertical video samples from raw
+                                podcast audio).</li>
+                            <li><strong>Day 15 to 21:</strong> Open a dedicated Money Market Fund account with a
+                                regulated institutional manager. Deposit your first 1,500/= to activate daily
+                                compounding.</li>
+                            <li><strong>Day 22 to 30:</strong> Set up your separate operational and personal accounts to
+                                keep business funds completely independent from living expenses.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Phase 2: Outreach & Securing First Paying Clients (Days 31 –
+                    60)</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Goal:</strong> Complete 100 direct prospect touchpoints and sign your first 2 to 3
+                            paying clients.</p>
+                        <ul>
+                            <li><strong>Day 31 to 45:</strong> Conduct 5 in-person visits or direct outreach calls every
+                                single weekday. Target businesses losing potential revenue to active digital
+                                competitors.</li>
+                            <li><strong>Day 46 to 52:</strong> Offer a low-risk trial to your first two clients:
+                                <em>"Pay a 30% deposit today; if we don't deliver verified results within 14 days, your
+                                    deposit is fully refunded."</em></li>
+                            <li><strong>Day 53 to 60:</strong> Over-deliver on deadlines and results. Request recorded
+                                video testimonials or short, written letters of recommendation from both clients.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Phase 3: Retainers, Margins & Portfolio Compounding (Days 61 –
+                    90)</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Goal:</strong> Convert project clients into monthly retainers, raise rates, and
+                            automate personal wealth allocations.</p>
+                        <ul>
+                            <li><strong>Day 61 to 70:</strong> Transition pilot clients onto recurring monthly
+                                maintenance retainers (e.g., 10,000/= to 15,000/= per month for updates, reviews, and
+                                catalog curation).</li>
+                            <li><strong>Day 71 to 80:</strong> Increase your prices by 30% for all new inbound
+                                prospects, using your first client case studies as social proof.</li>
+                            <li><strong>Day 81 to 90:</strong> Automate your personal savings rule: route 20% of all
+                                incoming revenue into your MMF or SACCO account immediately upon client payment. Review
+                                your profit margins and cut low-value, time-consuming tasks.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container" style="margin: 0 auto; padding: 0;">
+            <p><strong>The Sovereign Youth Masterclass</strong> &bull; Frameworks for Long-Term Economic Independence
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 8px; color: #64748b;">Built for practical execution. Apply these
+                frameworks with discipline and long-term consistency.</p>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+     JAVASCRIPT: Logic for Progress Bar, Dynamic Term Highlighting, Accordions, and Calculator
+     ========================================================================= -->
+    <script>
+        // 1. Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const progressPercentage = (scrollPosition / totalHeight) * 100;
+            document.getElementById('progress-bar').style.width = progressPercentage + '%';
+        });
+
+        // 2. Interactive Accordion Functionality
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionItem = button.parentElement;
+                const content = button.nextElementSibling;
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all other accordions
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.accordion-content').style.maxHeight = null;
+                });
+
+                // Toggle current accordion
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // 3. Dynamic Compound Interest Simulator
+        function updateInvestmentCalculations() {
+            const monthlyDeposit = parseFloat(document.getElementById('monthly-deposit').value) || 0;
+            const annualRate = (parseFloat(document.getElementById('interest-rate').value) || 0) / 100;
+            const years = parseFloat(document.getElementById('time-horizon').value) || 0;
+
+            const monthlyRate = annualRate / 12;
+            const totalMonths = years * 12;
+
+            let totalBalance = 0;
+
+            if (monthlyRate > 0) {
+                // Future Value of a Series formula: FV = P * [((1 + r)^n - 1) / r] * (1 + r)
+                totalBalance = monthlyDeposit * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) * (1 + monthlyRate);
+            } else {
+                totalBalance = monthlyDeposit * totalMonths;
+            }
+
+            const totalPrincipal = monthlyDeposit * totalMonths;
+            const totalInterest = Math.max(0, totalBalance - totalPrincipal);
+
+            // Format currency display with commas
+            document.getElementById('calc-principal').innerText = Math.round(totalPrincipal).toLocaleString() + '/=';
+            document.getElementById('calc-interest').innerText = Math.round(totalInterest).toLocaleString() + '/=';
+            document.getElementById('calc-total').innerText = Math.round(totalBalance).toLocaleString() + '/=';
+        }
+
+        // Bind input listeners to the financial calculator
+        document.getElementById('monthly-deposit').addEventListener('input', updateInvestmentCalculations);
+        document.getElementById('interest-rate').addEventListener('input', updateInvestmentCalculations);
+        document.getElementById('time-horizon').addEventListener('input', updateInvestmentCalculations);
+
+        // Initialize calculator results on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateInvestmentCalculations();
+        });
+    </script>
 
 </body>
-</html>
 
+</html>
 
